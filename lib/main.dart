@@ -20,7 +20,7 @@ class XylophoneApp extends StatelessWidget {
           playSound(1);
         },
         style: const ButtonStyle(
-          backgroundColor: WidgetStatePropertyAll(Colors.red),
+          backgroundColor: WidgetStatePropertyAll(Colors.amber),
           shape: WidgetStatePropertyAll(
             RoundedRectangleBorder(borderRadius: BorderRadius.zero),
           ),
@@ -32,13 +32,21 @@ class XylophoneApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       home: Scaffold(
         backgroundColor: Colors.black,
         body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [],
+            children: [
+              buildKey(),
+              buildKey(),
+              buildKey(),
+              buildKey(),
+              buildKey(),
+              buildKey(),
+              buildKey(),
+            ],
           ),
         ),
       ),
