@@ -1,9 +1,5 @@
-import 'dart:ui';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
-import 'package:flutter/widgets.dart';
 
 void main() {
   runApp(const XylophoneApp());
@@ -43,7 +39,7 @@ class XylophoneApp extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              buildKey(Color(value)),
+              buildKey(),
               buildKey(),
               buildKey(),
               buildKey(),
