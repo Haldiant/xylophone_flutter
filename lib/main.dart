@@ -1,5 +1,9 @@
+import 'dart:ui';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter/widgets.dart';
 
 void main() {
   runApp(const XylophoneApp());
@@ -8,19 +12,45 @@ void main() {
 class XylophoneApp extends StatelessWidget {
   const XylophoneApp({super.key});
 
+  void playSound(int soundNumber) {
+    final player = AudioPlayer();
+    player.play(AssetSource('note$soundNumber.wav'));
+  }
+
+  Expanded buildKey() {
+    return Expanded(
+      child: TextButton(
+        onPressed: () {
+          playSound(1);
+        },
+        style: const ButtonStyle(
+          backgroundColor: WidgetStatePropertyAll(Colors.red),
+          shape: WidgetStatePropertyAll(
+            RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+          ),
+        ),
+        child: const Text(''),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: Scaffold(
+        backgroundColor: Colors.black,
         body: SafeArea(
-          child: FilledButton(
-            onPressed: () async {
-              final player = AudioPlayer();
-              await player.play(
-                AssetSource('note1.wav'),
-              );
-            },
-            child: const Text('Click Me!'),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              buildKey(Color(value)),
+              buildKey(),
+              buildKey(),
+              buildKey(),
+              buildKey(),
+              buildKey(),
+              buildKey(),
+            ],
           ),
         ),
       ),
