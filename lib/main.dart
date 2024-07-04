@@ -8,21 +8,21 @@ void main() {
 class XylophoneApp extends StatelessWidget {
   const XylophoneApp({super.key});
 
-  void playSound(int soundNumber) {
+  void playSound(int soundNumber) async {
     final player = AudioPlayer();
-    player.play(AssetSource('note$soundNumber.wav'));
+    await player.play(AssetSource('note$soundNumber.wav'));
   }
 
-  Expanded buildKey({required Colors color, required int soundNumber}) {
+  Expanded soundKey({Color? color, required int soundNumber}) {
     return Expanded(
       child: TextButton(
         onPressed: () {
           playSound(soundNumber);
         },
-        style: const ButtonStyle(
+        style: TextButton.styleFrom(
           backgroundColor: color,
-          shape: WidgetStatePropertyAll(
-            RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.zero),
           ),
         ),
         child: const Text(''),
@@ -39,7 +39,13 @@ class XylophoneApp extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              buildKey(color: Colors.red, soundNumber: 1),
+              soundKey(color: Colors.red, soundNumber: 1),
+              soundKey(color: Colors.orange, soundNumber: 2),
+              soundKey(color: Colors.yellow, soundNumber: 3),
+              soundKey(color: Colors.lightGreen, soundNumber: 4),
+              soundKey(color: Colors.green, soundNumber: 5),
+              soundKey(color: Colors.blue, soundNumber: 6),
+              soundKey(color: Colors.purple, soundNumber: 7),
             ],
           ),
         ),
